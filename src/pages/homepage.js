@@ -121,7 +121,10 @@ class Homepage extends React.Component{
                         <LinearGradient
                             start={{x: 0, y: 0}} end={{x: 1, y: 1}}
                             colors={[ colors.primarylight , colors.primary, colors.primary, colors.primarydark]} style={{height:40, borderRadius:30, backgroundColor:colors.primarylight, margin:16}} >
-                            <TouchableOpacity style={{height:40, borderRadius:30,justifyContent:'center', alignItems:'center'}}>
+                            <TouchableOpacity
+                                onPress={()=>{this.props.navigation.navigate('packages')}}
+                                style={{height:40, borderRadius:30,justifyContent:'center', alignItems:'center', flexDirection:'row'}}>
+                                <Icon name={"ios-basket"} color={"white"} style={{margin:8}} size={20}/>
                                 <Text style={{color:'white', fontWeight:'bold', fontSize:16}}>
                                     Packages
                                 </Text>
@@ -137,7 +140,7 @@ class Homepage extends React.Component{
                         {/*Calender*/}
                         <View style={{height: 24, alignItems:'center', flexDirection:'row',padding:8, justifyContent:'space-between'}}>
                             <Text style={{color:"#343434", fontSize:18}}>Calendar</Text>
-                            <Icon name={"md-calendar"} size={22} color={colors.primary}/>
+                            <Icon name={"md-calendar"} size={22} color={colors.primarylight}/>
                         </View>
                         <Text style={{margin:8, color:'gray', textAlign: 'center'}}>Upcoming events - December 2019 in Ghana - The Year of Return</Text>
 
