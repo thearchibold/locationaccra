@@ -2,7 +2,9 @@ import React from "react";
 import {View, Text, Platform, StyleSheet, StatusBar,Image, ScrollView, Animated, TouchableOpacity, TouchableNativeFeedback} from "react-native"
 import Icon from "react-native-vector-icons/Ionicons"
 import LinearGradient from 'react-native-linear-gradient';
+import {Transition} from "react-navigation-fluid-transitions"
 import {colors} from "../helpers/constants";
+import VideoPlayer from "../components/video"
 
 
 const NAVBAR_HEIGHT = 54;
@@ -93,16 +95,19 @@ class Homepage extends React.Component{
                     <View style={{backgroundColor: 'white', paddingBottom:60}}>
                         <View style={{height:320}}>
                             <View style={{height:40, paddingHorizontal:8, flexDirection:"row",alignItems:'center', justifyContent: 'space-between'}}>
-                                <View style={{height: 24, alignItems:'center', flexDirection:'row',padding:8}}>
+                                <View style={{height: 24, alignItems:'center', flexDirection:'row'}}>
                                     <Text style={{color:colors.primarylight, fontSize:18}}>Mood</Text><Text style={{color:'gray',fontSize:18, fontWeight:'bold'}}>Board</Text>
                                 </View>
 
-                                <TouchableOpacity style={{justifyContent:"center",backgroundColor:colors.primary, height:24,borderRadius:12, paddingHorizontal:12}}>
+                                <TouchableOpacity
+                                    onPress={()=>{this.props.navigation.navigate('moodboard')}}
+                                    style={{justifyContent:"center",backgroundColor:colors.primary, height:24,borderRadius:12, paddingHorizontal:12}}>
                                     <Text style={{color:"white"}}>View all</Text>
                                 </TouchableOpacity>
                             </View>
                             <View style={{height:240, flex:1}}>
-                                <Image source={require('../assets/img/slider2.jpeg')} style={{flex:1, alignSelf:'center',height:240, width:'100%', resizeMode: 'cover'}}/>
+                                <VideoPlayer/>
+                                {/*<Image source={require('../assets/img/slider2.jpeg')} style={{flex:1, alignSelf:'center',height:240, width:'100%', resizeMode: 'cover'}}/>*/}
                             </View>
                             <View style={{ height:40, flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
                                 <View  style={{height:10, width:10, borderRadius:5,margin:4, backgroundColor:colors.primarylight}}/>
@@ -118,6 +123,7 @@ class Homepage extends React.Component{
 
                         {/*Moods moved to the buttom comes in later*/}
 
+                        <View style={{height:1, width:'100%', backgroundColor:'#dedede'}}/>
                         <LinearGradient
                             start={{x: 0, y: 0}} end={{x: 1, y: 1}}
                             colors={[ colors.primarylight , colors.primary, colors.primary, colors.primarydark]} style={{height:40, borderRadius:30, backgroundColor:colors.primarylight, margin:16}} >
@@ -130,6 +136,7 @@ class Homepage extends React.Component{
                                 </Text>
                             </TouchableOpacity>
                         </LinearGradient>
+
 
 
 
@@ -150,14 +157,16 @@ class Homepage extends React.Component{
                             <View style={{backgroundColor:colors.primarylight, height:1,marginHorizontal:4, flex:1}}/>
                         </View>
 
-                        <View style={{padding:4 , flexDirection:'row', margin:4}}>
+                        <TouchableOpacity
+                            onPress={()=>{this.props.navigation.navigate('calendardetails', {image:"slider3.jpg",id:"live"})}}
+                            style={{padding:4 , flexDirection:'row', margin:4}}>
                             <View style={{height:40,margin:4, width:40, borderRadius:20, backgroundColor:colors.primarylight, justifyContent:'center', alignItems:'center'}}>
                                 <Text style={{color:'white', fontWeight:'bold'}}>24</Text>
                             </View>
 
                             <View style={{borderRadius:4,flex:1, height:80, backgroundColor:'#fefefe', flexDirection:'row'}}>
                                 <View style={{flex:1}}>
-                                    <Text style={{fontSize:18, fontWeight:'bold'}}>​ ​LiveWyred​ </Text>
+                                    <Text style={{fontSize:16, fontWeight:'bold', color:'black'}}>​ ​LiveWyred​ </Text>
                                     <Text numberOfLines={3} allowFontScaling={true}>It is Christmas Eve and you’re in Ghana. You’ll stop by one of our Hotel
                                         Partners (JobyCo) to pick up all tickets, bands, general information and updates to your
                                         itinerary. Make sure you get some rest after, because at night, LiveWyred is premiering their
@@ -166,19 +175,23 @@ class Homepage extends React.Component{
                                 </View>
 
                                 <View style={{margin:4  }}>
-                                    <Image source={require('../assets/img/slider3.jpg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
+                                    <Transition shared={"live"}>
+                                        <Image source={require('../assets/img/slider3.jpg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
+                                    </Transition>
                                 </View>
                             </View>
-                        </View>
+                        </TouchableOpacity>
 
-                        <View style={{padding:4 , flexDirection:'row', margin:4}}>
+                        <TouchableOpacity
+                            onPress={()=>{this.props.navigation.navigate('calendardetails',{id:"1920"})}}
+                            style={{padding:4 , flexDirection:'row', margin:4}}>
                             <View style={{height:40,margin:4, width:40, borderRadius:20, backgroundColor:colors.primarylight, justifyContent:'center', alignItems:'center'}}>
                                 <Text style={{color:'white', fontWeight:'bold'}}>25</Text>
                             </View>
 
                             <View style={{borderRadius:4,flex:1, height:80, backgroundColor:'#fefefe', flexDirection:'row'}}>
                                 <View style={{flex:1}}>
-                                    <Text style={{fontSize:18, fontWeight:'bold'}}>​ 19 | 25​ </Text>
+                                    <Text style={{fontSize:16, fontWeight:'bold', color:'black'}}>​ 19 | 25​ </Text>
                                     <Text numberOfLines={3} allowFontScaling={true}>On Christmas day, Location Accra welcomes you to the biggest and most
                                         luxurious Christmas pool party in Africa! P.S keep an eye out for chocolate girls in bikinis.
                                         “There are a lot of ideas and resources being poured into this, we are going to make it fun, sexy
@@ -187,10 +200,12 @@ class Homepage extends React.Component{
                                 </View>
 
                                 <View style={{margin:4  }}>
-                                    <Image source={require('../assets/img/slider2.jpeg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
+                                    <Transition shared={"1920"}>
+                                        <Image source={require('../assets/img/slider2.jpeg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
+                                    </Transition>
                                 </View>
                             </View>
-                        </View>
+                        </TouchableOpacity>
 
                         <View style={{padding:4 , flexDirection:'row', margin:4}}>
                             <View style={{height:40,margin:4, width:40, borderRadius:20, backgroundColor:colors.primarylight, justifyContent:'center', alignItems:'center'}}>
@@ -199,7 +214,7 @@ class Homepage extends React.Component{
 
                             <View style={{borderRadius:4,flex:1, height:80, backgroundColor:'#fefefe', flexDirection:'row'}}>
                                 <View style={{flex:1}}>
-                                    <Text style={{fontSize:18, fontWeight:'bold'}}>​ Little Havana​ </Text>
+                                    <Text style={{fontSize:16, fontWeight:'bold', color:'black'}}>​ Little Havana​ </Text>
                                     <Text numberOfLines={3} allowFontScaling={true}>Legend has it, you can hear the cheers of Little Havana from miles away.
                                         This Cuban Themed Party in the hills of Aburi has been running for 3 years, with tickets and
                                         reservations sold out weeks in advance. Think white dresses, strong liquor, cigars and the most
@@ -222,7 +237,7 @@ class Homepage extends React.Component{
 
                             <View style={{borderRadius:4,flex:1, height:80, backgroundColor:'#fefefe', flexDirection:'row'}}>
                                 <View style={{flex:1}}>
-                                    <Text style={{fontSize:18, fontWeight:'bold'}}>​ Detty Rave​ </Text>
+                                    <Text style={{fontSize:16, fontWeight:'bold', color:'black'}}>​ Detty Rave​ </Text>
                                     <Text numberOfLines={3} allowFontScaling={true}>Afrobeat superstar Mr. Eazi does not spare a penny when it comes to
                                         putting together his annual concert and party. Set right on the beach, this rave features
                                         performances from local and international Afrobeats artists and delivers on energy. It’s called
@@ -242,7 +257,7 @@ class Homepage extends React.Component{
 
                             <View style={{borderRadius:4,flex:1, height:80, backgroundColor:'#fefefe', flexDirection:'row'}}>
                                 <View style={{flex:1}}>
-                                    <Text style={{fontSize:18, fontWeight:'bold'}}>​ Afrochella​ </Text>
+                                    <Text style={{fontSize:16, fontWeight:'bold', color:'black'}}>​ Afrochella​ </Text>
                                     <Text numberOfLines={3} allowFontScaling={true}>Have you ever been to a festival this spiritual? Afrochella is now a mainstay
                                         in Ghana’s december events line up. As part of an enterprising effort by its organizers to
                                         connect the African continent and propagate the culture, this Afrobeats festival showcases
@@ -268,7 +283,7 @@ class Homepage extends React.Component{
 
                             <View style={{borderRadius:4,flex:1,backgroundColor:'#fefefe', flexDirection:'row'}}>
                                 <View style={{flex:1}}>
-                                    <Text style={{fontSize:18, fontWeight:'bold'}} allowFontScaling={true}>​​ Community Participation and Outreach​</Text>
+                                    <Text style={{fontSize:16, fontWeight:'bold', color:'black'}} allowFontScaling={true}>​​ Community Participation and Outreach​</Text>
                                     <Text numberOfLines={3} allowFontScaling={true}>YWe don’t know how you’ll take this but umm,
                                         Location Accra believes in Ghana and its sustainable future. It is why on the last sunday of the
                                         year, we are partnering with community-conscious companies to create workshops, set up
@@ -290,7 +305,7 @@ class Homepage extends React.Component{
 
                             <View style={{borderRadius:4,flex:1, height:80, backgroundColor:'#fefefe', flexDirection:'row'}}>
                                 <View style={{flex:1}}>
-                                    <Text style={{fontSize:18, fontWeight:'bold'}}>​Central Region Tour​</Text>
+                                    <Text style={{fontSize:16, fontWeight:'bold', color:'black'}}>​Central Region Tour​</Text>
                                     <Text numberOfLines={3} allowFontScaling={true}>You’re starting the second phase of your trip with this 2 hour ride
                                         to the Central region of Ghana. You will visit Ghana’s most visited historical sites - learn aboutthe Slave Castles of Cape-Coast and follow up with a nerve wracking walk on the famous
                                         rope-canopies elevated over the Kakum Forest Reserve.</Text>
@@ -309,7 +324,7 @@ class Homepage extends React.Component{
 
                             <View style={{borderRadius:4,flex:1, height:80, backgroundColor:'#fefefe', flexDirection:'row'}}>
                                 <View style={{flex:1}}>
-                                    <Text style={{fontSize:18, fontWeight:'bold'}}>​​ Accra City Food Crawl</Text>
+                                    <Text style={{fontSize:16, fontWeight:'bold', color:'black'}}>​​ Accra City Food Crawl</Text>
                                     <Text numberOfLines={3} allowFontScaling={true}>Ghanaian dishes are famous for its flavor and heartines, and
                                         there is no better way to experience the culture than to allow your taste-buds to enjoy bites of
                                         the beautiful Ghanaian cuisine at our partnering restaurants, while sightseeing and
@@ -329,7 +344,7 @@ class Homepage extends React.Component{
 
                             <View style={{borderRadius:4,flex:1, height:80, backgroundColor:'#fefefe', flexDirection:'row'}}>
                                 <View style={{flex:1}}>
-                                    <Text style={{fontSize:18, fontWeight:'bold'}}>​Shai Hills Reserve</Text>
+                                    <Text style={{fontSize:16, fontWeight:'bold', color:'black'}}>​Shai Hills Reserve</Text>
                                     <Text numberOfLines={3} allowFontScaling={true}>You love animals, we love animals so we are going on an animal
                                         adventure! You will have the opportunity to spend time with some baboons and wild species at
                                         this nature reserve just outside Accra. Get your treats and cameras ready, if you’re nice, you
@@ -349,7 +364,7 @@ class Homepage extends React.Component{
 
                             <View style={{borderRadius:4,flex:1, height:80, backgroundColor:'#fefefe', flexDirection:'row'}}>
                                 <View style={{flex:1}}>
-                                    <Text style={{fontSize:18, fontWeight:'bold'}}>​Eastern Region Tour​</Text>
+                                    <Text style={{fontSize:16, fontWeight:'bold', color:'black'}}>​Eastern Region Tour​</Text>
                                     <Text numberOfLines={3} allowFontScaling={true}>It’s the last day on the calendar. You’re exhausted, so how about
                                         a stroll in Ghana’s romantic Aburi Gardens, then plunge into the twin waterfalls at Boti for a
                                         relaxing end to your vacation. P.S keep an eye out for the Umbrella Rock.</Text>
