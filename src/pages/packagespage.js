@@ -3,6 +3,7 @@ import {View, Text, StatusBar, TouchableOpacity, StyleSheet} from "react-native"
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from "react-native-vector-icons/FontAwesome"
 import {colors} from "../helpers/constants";
+import {DiamondPackage, GoldPackage, Platinum} from "../components/packages";
 
 export default class PackagesPage extends React.Component{
     constructor(props) {
@@ -15,6 +16,28 @@ export default class PackagesPage extends React.Component{
     }
 
     render(){
+        let show ;
+        switch (this.state.active) {
+            case 'gold':
+                show = <GoldPackage/>;
+                break;
+
+            case 'platinum':
+                show = <Platinum/>;
+                break;
+            case 'diamond':
+                show = <DiamondPackage/>;
+                break;
+            case 'vip':
+                break;
+
+            case 'extras':
+                break;
+
+            default:
+                show = null
+        }
+
         return(
             <LinearGradient colors={[colors.primarydark, colors.primary]} style={{flex:1}}>
                 <StatusBar backgroundColor={colors.primarydark} barStyle="light-content" />
@@ -25,7 +48,7 @@ export default class PackagesPage extends React.Component{
                      }}>
                         <Icon allowFontScaling={true} size={24} name={"arrow-left"} color={"white"}/>
                     </TouchableOpacity>
-                    <Text style={{fontSize:18, fontWeight: 'bold', color:'white'}}>Packages</Text>
+                    <Text style={{fontSize:20, color:'white', marginLeft:16}}>Packages</Text>
                 </View>
                 <View style={{height:34, flexDirection:'row', borderColor:'white',borderWidth:1,borderRadius:4,  marginHorizontal:8}}>
 
@@ -60,7 +83,12 @@ export default class PackagesPage extends React.Component{
                     </TouchableOpacity>
 
                 </View>
+                {
+                    show
+                }
+
             </LinearGradient>
+
         )
 
     }
