@@ -3,8 +3,8 @@ import {View, Text, Platform, StyleSheet, StatusBar,Image, ScrollView, Animated,
 import Icon from "react-native-vector-icons/Ionicons"
 import LinearGradient from 'react-native-linear-gradient';
 import {Transition} from "react-navigation-fluid-transitions"
-import {colors} from "../helpers/constants";
-import VideoPlayer from "../components/video"
+import {colors} from "../../helpers/constants";
+import VideoPlayer from "../../components/video"
 
 
 const NAVBAR_HEIGHT = 54;
@@ -176,7 +176,7 @@ class Homepage extends React.Component{
 
                                 <View style={{margin:4  }}>
                                     <Transition shared={"live"}>
-                                        <Image source={require('../assets/img/slider3.jpg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
+                                        <Image source={require('../../assets/img/slider3.jpg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
                                     </Transition>
                                 </View>
                             </View>
@@ -201,7 +201,7 @@ class Homepage extends React.Component{
 
                                 <View style={{margin:4  }}>
                                     <Transition shared={"1920"}>
-                                        <Image source={require('../assets/img/slider2.jpeg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
+                                        <Image source={require('../../assets/img/slider2.jpeg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
                                     </Transition>
                                 </View>
                             </View>
@@ -225,7 +225,7 @@ class Homepage extends React.Component{
                                 </View>
 
                                 <View style={{margin:4  }}>
-                                    <Image source={require('../assets/img/logo.png')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
+                                    <Image source={require('../../assets/img/logo.png')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
                                 </View>
                             </View>
                         </View>
@@ -245,7 +245,7 @@ class Homepage extends React.Component{
                                 </View>
 
                                 <View style={{margin:4  }}>
-                                    <Image source={require('../assets/img/lap.jpeg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
+                                    <Image source={require('../../assets/img/lap.jpeg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
                                 </View>
                             </View>
                         </View>
@@ -266,7 +266,7 @@ class Homepage extends React.Component{
                                 </View>
 
                                 <View style={{margin:4  }}>
-                                    <Image source={require('../assets/img/slider3.jpg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
+                                    <Image source={require('../../assets/img/slider3.jpg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
                                 </View>
                             </View>
                         </View>
@@ -293,7 +293,7 @@ class Homepage extends React.Component{
                                 </View>
 
                                 <View style={{margin:4  }}>
-                                    <Image source={require('../assets/img/logo.png')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
+                                    <Image source={require('../../assets/img/logo.png')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
                                 </View>
                             </View>
                         </View>
@@ -312,7 +312,7 @@ class Homepage extends React.Component{
                                 </View>
 
                                 <View style={{margin:4  }}>
-                                    <Image source={require('../assets/img/slider1.jpeg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
+                                    <Image source={require('../../assets/img/slider1.jpeg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
                                 </View>
                             </View>
                         </View>
@@ -332,7 +332,7 @@ class Homepage extends React.Component{
                                 </View>
 
                                 <View style={{margin:4  }}>
-                                    <Image source={require('../assets/img/slider3.jpg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
+                                    <Image source={require('../../assets/img/slider3.jpg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
                                 </View>
                             </View>
                         </View>
@@ -352,7 +352,7 @@ class Homepage extends React.Component{
                                 </View>
 
                                 <View style={{margin:4  }}>
-                                    <Image source={require('../assets/img/slider2.jpeg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
+                                    <Image source={require('../../assets/img/slider2.jpeg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
                                 </View>
                             </View>
                         </View>
@@ -371,7 +371,7 @@ class Homepage extends React.Component{
                                 </View>
 
                                 <View style={{margin:4  }}>
-                                    <Image source={require('../assets/img/slider1.jpeg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
+                                    <Image source={require('../../assets/img/slider1.jpeg')} style={{flex:1, alignSelf:'center', height:80, width:80,resizeMode: 'cover', borderRadius:4,}}/>
                                 </View>
                             </View>
                         </View>

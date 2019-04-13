@@ -1,12 +1,12 @@
 import {createAppContainer} from "react-navigation"
 import {createFluidNavigator} from "react-navigation-fluid-transitions"
 
-import Homepage from "./pages/homepage"
+import Homepage from "./pages/HomePage/homepage"
 import PageTwo from "./pages/pagetwo"
-import PackagesPage from "./pages/packagespage"
-import CalendarDetails from "./pages/calendardetails"
+import PackagesPage from "./pages/HomePage/packagespage"
+import CalendarDetails from "./pages/HomePage/calendardetails"
 import TourPage from "./components/virtual_tour/vrtour"
-import  MoodBoard from './pages/moodboard'
+import  MoodBoard from './pages/HomePage/moodboard'
 
 const MainApp = createAppContainer(createFluidNavigator({
     pageone:{

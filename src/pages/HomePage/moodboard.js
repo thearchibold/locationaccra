@@ -1,6 +1,6 @@
 import React from "react"
 import {View} from "react-native"
-import {colors} from "../helpers/constants";
+import {colors} from "../../helpers/constants";
 
 export default class MoodBoard extends React.Component{
     constructor(props) {

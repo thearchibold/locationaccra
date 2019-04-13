@@ -2,8 +2,8 @@ import React from "react";
 import {View, Text, StatusBar, TouchableOpacity, StyleSheet} from "react-native"
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from "react-native-vector-icons/FontAwesome"
-import {colors} from "../helpers/constants";
-import {DiamondPackage, GoldPackage, Platinum} from "../components/packages";
+import {colors} from "../../helpers/constants";
+import {DiamondPackage, GoldPackage, Platinum} from "../../components/packages/index";
 
 export default class PackagesPage extends React.Component{
     constructor(props) {

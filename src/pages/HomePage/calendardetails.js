@@ -1,7 +1,7 @@
 import React from "react"
 import {View, Image, TouchableOpacity, Text, ScrollView} from "react-native"
 import {Transition} from "react-navigation-fluid-transitions"
-import {colors} from "../helpers/constants";
+import {colors} from "../../helpers/constants";
 import Icon from "react-native-vector-icons/FontAwesome"
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from "react-native-vector-icons/Ionicons"
@@ -24,7 +24,7 @@ export default  class CalendarDetails extends React.Component{
             <View style={{flex:1, backgroundColor:colors.primarydark, position:'relative'}}>
                 <View style={{height:260, position:'absolute', top:0, left:0,right:0, bottom:0}}>
                     <Transition shared={this.props.navigation.state.params.id}>
-                        <Image source={require(`../assets/img/slider3.jpg`)} style={{alignSelf:'center',height:260, resizeMode: 'cover'}}/>
+                        <Image source={require(`../../assets/img/slider1.jpeg`)} style={{alignSelf:'center',height:260, resizeMode: 'cover'}}/>
                     </Transition>
                     <LinearGradient colors={["rgba(255,255,255, 0)","rgba(255,255,255, 0)","rgba(255,255,255, 0)","rgba(255,255,255, 0)","rgba(157,0,7, 0.4)", colors.primarydark]} style={{
                         height: 260,
@@ -44,7 +44,7 @@ export default  class CalendarDetails extends React.Component{
                         <TouchableOpacity
                             onPress={()=>{this.props.navigation.navigate('tour')}}
                             style={{ padding:8, backgroundColor:'white', borderRadius:40, justifyContent:'center', alignItems:'center'}}>
-                            <Image source={require('./../assets/img/virtual-reality.png')} height={10} width={20}/>
+                            <Image source={require('../../assets/img/virtual-reality.png')} height={10} width={20}/>
                             {/*<Text style={{color:colors.primarydark, fontSize:10, fontWeight: 'bold'}}>Take a tour</Text>*/}
                             {/*<Icon name={"sunglasses"} color={colors.primarydark} size={24}/>*/}
 
