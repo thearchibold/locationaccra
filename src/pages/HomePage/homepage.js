@@ -7,7 +7,7 @@ import {colors} from "../../helpers/constants";
 import VideoPlayer from "../../components/video"
 
 
-const NAVBAR_HEIGHT = 54;
+const NAVBAR_HEIGHT = 50;
 const STATUS_BAR_HEIGHT = 0;
 const AnimatedListView = Animated.createAnimatedComponent(ScrollView); //whatever animation view it is
 
@@ -384,8 +384,7 @@ class Homepage extends React.Component{
                 <Animated.View style={[styles.navbar, { transform: [{ translateY: navbarTranslate }] }]}>
                     <Animated.View style={[styles.title, { opacity: navbarOpacity }]}>
                         {/*<Image height={40} width={null} resizeMode={'cover'} source={require('../assets/img/logo.png')}/>*/}
-                        <Text style={{color:"white", fontSize:18}}>Location Accra</Text>
-                        <Icon size={24} name={"ios-menu"} color={"white"}/>
+                        <Text style={{color:"white", fontSize:18}}>ACTIVITIES</Text>
                     </Animated.View>
                 </Animated.View>
 
@@ -445,7 +444,7 @@ const styles = StyleSheet.create({
         height:40,
         overflow: 'hidden',
         overlayColor: 'orangered',
-        justifyContent:"space-between",
+        justifyContent:'center',
         flexDirection:'row',
 
 

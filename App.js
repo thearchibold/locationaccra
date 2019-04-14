@@ -1,13 +1,13 @@
 
 
 import React, {Component} from 'react';
-import {MainApp} from "./src";
+import {MainPageTabs} from "./src/pages/navigation";
 
 
 export default  class App extends Component{
   render(){
     return(
-        <MainApp/>
+        <MainPageTabs/>
     )
   }
 }
