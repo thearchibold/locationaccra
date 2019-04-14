@@ -23,14 +23,17 @@ class ProfilePage extends Component{
             <View>
                 <LinearGradient
                     style={{height:this.state.gradient_height}}
-                    start={{x: 1, y: 1}} end={{x: 0, y: 1}}
+                    start={{x: 0, y: 0}} end={{x: 0, y: 1}}
                     colors={[colors.primarydark , colors.primary, colors.primary, colors.primarylight]}>
                     <View style={{height:'100%',flex:1, justifyContent:'center', alignItems:'center'}}>
-                        <View style={{height:60, width:60, borderWidth:2, borderColor:'white', borderRadius:30}}>
+                        <View style={{height:80, width:80, borderWidth:2, borderColor:'white', borderRadius:40}}>
 
                         </View>
                     </View>
                 </LinearGradient>
+                <View style={{height:60, }}>
+
+                </View>
 
             </View>
         );

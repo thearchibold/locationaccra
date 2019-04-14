@@ -17,7 +17,7 @@ const MainPageTabs = createAppContainer(createBottomTabNavigator({
                 title:"SocialNetwork",
                 tabBarIcon : ({focused, tintColor}) => {
                     const { routeName } = navigation.state;
-                    return <Icon name={'ios-people'} color={tintColor} size={22}/>
+                    return <Icon name={'ios-paper'} color={tintColor} size={22}/>
                 }
             })
         },
@@ -61,7 +61,7 @@ const MainPageTabs = createAppContainer(createBottomTabNavigator({
         initialRouteName:"timeline",
         lazy:false,
         tabBarOptions:{
-            activeTintColor:colors.primarydark,
+            activeTintColor:"#000",
             inactiveTintColor:"gray",
             showLabel:false
         }

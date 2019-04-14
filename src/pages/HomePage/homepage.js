@@ -5,6 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Transition} from "react-navigation-fluid-transitions"
 import {colors} from "../../helpers/constants";
 import VideoPlayer from "../../components/video"
+import {Separator} from "../../components/separator";
 
 
 const NAVBAR_HEIGHT = 50;
@@ -12,9 +13,6 @@ const STATUS_BAR_HEIGHT = 0;
 const AnimatedListView = Animated.createAnimatedComponent(ScrollView); //whatever animation view it is
 
 class Homepage extends React.Component{
-    static navigationOptions = {
-        title: 'Page One',
-    };
 
     _clampedScrollValue = 0;
     _offsetValue = 0;
@@ -123,7 +121,7 @@ class Homepage extends React.Component{
 
                         {/*Moods moved to the buttom comes in later*/}
 
-                        <View style={{height:1, width:'100%', backgroundColor:'#dedede'}}/>
+                        <Separator/>
                         <LinearGradient
                             start={{x: 0, y: 0}} end={{x: 1, y: 1}}
                             colors={[ colors.primarylight , colors.primary, colors.primary, colors.primarydark]} style={{height:40, borderRadius:30, backgroundColor:colors.primarylight, margin:16}} >
@@ -136,7 +134,7 @@ class Homepage extends React.Component{
                                 </Text>
                             </TouchableOpacity>
                         </LinearGradient>
-
+                        <Separator/>
 
 
 
@@ -270,7 +268,7 @@ class Homepage extends React.Component{
                                 </View>
                             </View>
                         </View>
-
+                        <Separator/>
                         <View style={{ alignItems:'center', flexDirection:'row', padding:12}}>
                             <Text>Phase Two</Text>
                             <View style={{backgroundColor:colors.primarylight, height:1,margin:4, flex:1}}/>
