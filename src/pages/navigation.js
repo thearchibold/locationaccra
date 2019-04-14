@@ -61,7 +61,7 @@ const MainPageTabs = createAppContainer(createBottomTabNavigator({
         initialRouteName:"timeline",
         lazy:false,
         tabBarOptions:{
-            activeTintColor:"#000",
+            activeTintColor:colors.primarylight,
             inactiveTintColor:"gray",
             showLabel:false
         }
