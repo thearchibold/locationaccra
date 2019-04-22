@@ -3,10 +3,10 @@ package com.locationaccra;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.corbt.keepawake.KCKeepAwakePackage;
 import com.github.yamill.orientation.OrientationPackage;
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
+import com.corbt.keepawake.KCKeepAwakePackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
@@ -29,10 +29,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new KCKeepAwakePackage(),
             new OrientationPackage(),
-            new RNGestureHandlerPackage(),
             new LinearGradientPackage(),
+            new KCKeepAwakePackage(),
+           new RNGestureHandlerPackage(),
             new ReactVideoPackage(),
             new VectorIconsPackage()
       );
