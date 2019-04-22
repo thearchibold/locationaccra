@@ -1,9 +1,8 @@
-import React,{Component} from "react"
-import {View, Text, Animated, ScrollView, StyleSheet, Platform, Image} from "react-native"
+import React, {Component} from "react"
+import {Animated, Platform, ScrollView, StyleSheet, Text, View} from "react-native"
 import Icon from "react-native-vector-icons/Ionicons"
 import {colors} from "../../helpers/constants";
 import {Separator} from "../../components/separator";
-import VideoPlayer from "../../components/video";
 import {TimelineImage, TimelineText, TimelineVideo} from "../../components/timeline_components";
 
 
@@ -146,6 +145,19 @@ class Timeline extends Component{
                             </View>
                         </View>
                     </View>
+
+
+                    <Separator/>
+
+                    <TimelineImage/>
+
+                    <Separator/>
+
+                    <TimelineText/>
+
+                    <Separator/>
+
+                    <TimelineVideo/>
 
 
 

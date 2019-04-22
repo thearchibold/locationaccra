@@ -1,28 +1,16 @@
-import React, {Component} from "react"
-import {Image, View} from "react-native"
-import {Platform, Text} from "react-native";
+import React from "react"
+import {Image, Text, View} from "react-native"
 import Icon from "react-native-vector-icons/Ionicons";
-import {colors} from "../helpers/constants";
 import VideoPlayer from "./video";
 import {Separator} from "./separator";
+import {TimelineHeader} from "./timeline_component_header";
 
 
 const TimelineVideo = (props) =>{
     return(
         <View>
             {/*header*/}
-            <View style={{flexDirection: 'row', alignItems:'center', height:50,flex:1, paddingHorizontal:4}}>
-                <View style={{height:40, width: 40, borderRadius:20, backgroundColor: 'red', margin:4}}>
-
-                </View>
-                <View style={{flex:1, flexDirection:'column', justifyContent:'center'}}>
-                    <Text style={{fontWeight: 'bold', color:'#000', fontSize:14}}>Archibold Bernard</Text>
-                    <Text style={{ color:'#3b3b3b', fontSize:10}}>Tuesday, 12 June 2017  10:30am</Text>
-                </View>
-                <View style={{height:50, width:30, justifyContent:'center', alignItems:'center'}}>
-                    <Icon name={Platform.OS === "android" ? "md-more" : "ios-more"} size={24} color={colors.primary}/>
-                </View>
-            </View>
+            <TimelineHeader/>
 
             {/*message body*/}
             <View style={{backgroundColor:'green'}}>
@@ -32,19 +20,29 @@ const TimelineVideo = (props) =>{
 
             <Separator height={1}  marginHorizontal={4} color={"#f7f7f7"}/>
 
-            <View style={{height:50, flexDirection:'row', alignItems:'center', padding:4}}>
-                <View style={{flexDirection:'row', flex:1}}>
+            <View style={{
+                height: 50,
+                flexDirection: 'row',
+                alignItems: 'center',
+                padding: 4,
+                justifyContent: "space-around"
+            }}>
+                <View style={{
+                    flexDirection: 'row',
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    paddingLeft: 8
+                }}>
                     <Icon name={"ios-heart"} color={"gainsboro"} size={24}/>
-                    <Text style={{margin:2}}>20 interested</Text>
+                    <Text style={{marginLeft: 8}}>20 interested</Text>
                 </View>
 
-                <View style={{flexDirection:'row', flex:1}}>
+                <View style={{flexDirection: 'row', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                     <Icon name={"md-chatboxes"} color={"gainsboro"} size={24}/>
                     <Text style={{margin:2}}>40 comments</Text>
                 </View>
-                <View style={{flexDirection:'row', flex:1}}>
-                    <Icon name={"ios-heart"} color={"gainsboro"} size={24}/>
-                </View>
+
             </View>
         </View>
     )
@@ -57,35 +55,34 @@ const TimelineVideo = (props) =>{
 const TimelineText = (props) =>{
     return(
         <View>
-            <View style={{flexDirection: 'row', alignItems:'center', height:50,flex:1, paddingHorizontal:4}}>
-                <View style={{height:40, width: 40, borderRadius:20, backgroundColor: 'orangered', margin:4}}>
-
-                </View>
-                <View style={{flex:1, flexDirection:'column', justifyContent:'center'}}>
-                    <Text style={{fontWeight: 'bold', color:'#000', fontSize:14}}>Minty Nana Ekua</Text>
-                    <Text style={{ color:'#3b3b3b', fontSize:10}}>Tuesday, 12 June 2017  10:30am</Text>
-                </View>
-                <View style={{height:50, width:30, justifyContent:'center', alignItems:'center'}}>
-                    <Icon name={Platform.OS === "android" ? "md-more" : "ios-more"} size={24} color={colors.primary}/>
-                </View>
-            </View>
+            <TimelineHeader/>
 
             <Text style={{fontSize:18, color:'black', margin:6}}>Who is rocking this years afrochella. Mann that shid will be crazy</Text>
 
 
-            <View style={{height:50, flexDirection:'row', alignItems:'center', padding:4}}>
-                <View style={{flexDirection:'row', flex:1}}>
+            <View style={{
+                height: 50,
+                flexDirection: 'row',
+                alignItems: 'center',
+                padding: 4,
+                justifyContent: "space-around"
+            }}>
+                <View style={{
+                    flexDirection: 'row',
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    paddingLeft: 8
+                }}>
                     <Icon name={"ios-heart"} color={"gainsboro"} size={24}/>
-                    <Text style={{margin:2}}>20 interested</Text>
+                    <Text style={{marginLeft: 8}}>20 interested</Text>
                 </View>
 
-                <View style={{flexDirection:'row', flex:1}}>
+                <View style={{flexDirection: 'row', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                     <Icon name={"md-chatboxes"} color={"gainsboro"} size={24}/>
                     <Text style={{margin:2}}>40 comments</Text>
                 </View>
-                <View style={{flexDirection:'row', flex:1}}>
-                    <Icon name={"ios-heart"} color={"gainsboro"} size={24}/>
-                </View>
+
             </View>
         </View>
     )
@@ -97,18 +94,7 @@ const TimelineImage = (props) => {
     return(
         <View>
             {/*header*/}
-            <View style={{flexDirection: 'row', alignItems:'center', height:50,flex:1, paddingHorizontal:4}}>
-                <View style={{height:40, width: 40, borderRadius:20, backgroundColor: 'gray', margin:4}}>
-
-                </View>
-                <View style={{flex:1, flexDirection:'column', justifyContent:'center'}}>
-                    <Text style={{fontWeight: 'bold', color:'#000', fontSize:14}}>Archibold Bernard</Text>
-                    <Text style={{ color:'#3b3b3b', fontSize:10}}>Tuesday, 12 June 2017  10:30am</Text>
-                </View>
-                <View style={{height:50, width:30, justifyContent:'center', alignItems:'center'}}>
-                    <Icon name={Platform.OS === "android" ? "md-more" : "ios-more"} size={24} color={colors.primary}/>
-                </View>
-            </View>
+            <TimelineHeader/>
 
             {/*message body*/}
             <View style={{height:300, backgroundColor:'green', overflow: 'hidden'}}>
@@ -119,19 +105,29 @@ const TimelineImage = (props) => {
 
             <Separator height={1}  marginHorizontal={4} color={"#f7f7f7"}/>
 
-            <View style={{height:50, flexDirection:'row', alignItems:'center', padding:4}}>
-                <View style={{flexDirection:'row', flex:1}}>
+            <View style={{
+                height: 50,
+                flexDirection: 'row',
+                alignItems: 'center',
+                padding: 4,
+                justifyContent: "space-around"
+            }}>
+                <View style={{
+                    flexDirection: 'row',
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    paddingLeft: 8
+                }}>
                     <Icon name={"ios-heart"} color={"gainsboro"} size={24}/>
-                    <Text style={{margin:2}}>20 interested</Text>
+                    <Text style={{marginLeft: 8}}>20 interested</Text>
                 </View>
 
-                <View style={{flexDirection:'row', flex:1}}>
+                <View style={{flexDirection: 'row', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                     <Icon name={"md-chatboxes"} color={"gainsboro"} size={24}/>
                     <Text style={{margin:2}}>40 comments</Text>
                 </View>
-                <View style={{flexDirection:'row', flex:1}}>
-                    <Icon name={"ios-heart"} color={"gainsboro"} size={24}/>
-                </View>
+
             </View>
         </View>
     )

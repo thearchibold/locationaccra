@@ -1,7 +1,6 @@
 import React from "react";
-import {View, Text, Platform, StyleSheet, StatusBar,Image, ScrollView, Animated, TouchableOpacity, TouchableNativeFeedback} from "react-native"
+import {Animated, Image, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View} from "react-native"
 import Icon from "react-native-vector-icons/Ionicons"
-import LinearGradient from 'react-native-linear-gradient';
 import {Transition} from "react-navigation-fluid-transitions"
 import {colors} from "../../helpers/constants";
 import VideoPlayer from "../../components/video"
@@ -122,18 +121,24 @@ class Homepage extends React.Component{
                         {/*Moods moved to the buttom comes in later*/}
 
                         <Separator/>
-                        <LinearGradient
-                            start={{x: 0, y: 0}} end={{x: 1, y: 1}}
-                            colors={[ colors.primarylight , colors.primary, colors.primary, colors.primarydark]} style={{height:40, borderRadius:30, backgroundColor:colors.primarylight, margin:16}} >
-                            <TouchableOpacity
-                                onPress={()=>{this.props.navigation.navigate('packages')}}
-                                style={{height:40, borderRadius:30,justifyContent:'center', alignItems:'center', flexDirection:'row'}}>
-                                <Icon name={"ios-basket"} color={"white"} style={{margin:8}} size={20}/>
-                                <Text style={{color:'white', fontWeight:'bold', fontSize:16}}>
+                        <TouchableOpacity
+                            onPress={()=>{this.props.navigation.navigate('packages')}}
+                            style={{
+                                margin: 16,
+                                height: 40,
+                                borderRadius: 4,
+                                borderWidth: 1,
+                                borderColor: colors.primarylight,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                flexDirection: 'row'
+                            }}>
+                            <Icon name={"ios-basket"} color={colors.primarylight} style={{margin: 8}} size={20}/>
+                            <Text style={{color: colors.primarylight, fontWeight: 'bold', fontSize: 16}}>
                                     Packages
                                 </Text>
                             </TouchableOpacity>
-                        </LinearGradient>
+
                         <Separator/>
 
 
@@ -143,7 +148,13 @@ class Homepage extends React.Component{
                         {/*<View style={{height:1, backgroundColor:'#dedede', marginVertical:16}}/>*/}
 
                         {/*Calender*/}
-                        <View style={{height: 24, alignItems:'center', flexDirection:'row',padding:8, justifyContent:'space-between'}}>
+                        <View style={{
+                            height: 24,
+                            alignItems: 'center',
+                            flexDirection: 'row',
+                            padding: 16,
+                            justifyContent: 'space-between'
+                        }}>
                             <Text style={{color:"#343434", fontSize:18}}>Calendar</Text>
                             <Icon name={"md-calendar"} size={22} color={colors.primarylight}/>
                         </View>
