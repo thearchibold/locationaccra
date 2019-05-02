@@ -9,7 +9,7 @@ import {Separator} from "./separator";
 const TimelineHeader = (props) => {
     return(
         <View>
-            <View style={{flexDirection: 'row', alignItems:'center', height:50,flex:1, paddingHorizontal:4}}>
+            <View style={{flexDirection: 'row', alignItems:'center', height:50,flex:1, paddingHorizontal:4, paddingVertical:8}}>
                 <View style={{height:40, width: 40, borderRadius:20, backgroundColor: 'gray', margin:4}}>
 
                 </View>

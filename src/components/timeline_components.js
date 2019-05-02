@@ -16,7 +16,7 @@ const TimelineVideo = (props) =>{
             <View style={{backgroundColor:'green'}}>
                 <VideoPlayer/>
             </View>
-            <Text style={{margin:6, fontStyle:'italic'}}>A small comment about the picture or image goes in here</Text>
+            <Text style={{margin:6, fontStyle:'normal', color:'#686868'}}>A small comment about the picture or image goes in here</Text>
 
             <Separator height={1}  marginHorizontal={4} color={"#f7f7f7"}/>
 
@@ -97,11 +97,11 @@ const TimelineImage = (props) => {
             <TimelineHeader/>
 
             {/*message body*/}
-            <View style={{height:300, backgroundColor:'green', overflow: 'hidden'}}>
-                <Image source={require("../assets/img/slider1.jpeg")} height={300} resizeMode={'cover'}/>
+            <View style={{height:240, backgroundColor:'green', overflow: 'hidden'}}>
+                <Image source={require("../assets/img/slider1.jpeg")} style={{height:240,width:'100%', resizeMode:'cover'}}/>
 
             </View>
-            <Text style={{margin:6, fontStyle:'italic'}}>A small comment about the picture or image goes in here</Text>
+            <Text style={{margin:6, fontStyle:'normal', color:'#686868'}}>A small comment about the picture or image goes in here</Text>
 
             <Separator height={1}  marginHorizontal={4} color={"#f7f7f7"}/>
 

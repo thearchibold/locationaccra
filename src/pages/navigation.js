@@ -1,14 +1,23 @@
 import React, {Component} from "react";
+import {View} from "react-native"
 import {createBottomTabNavigator, createAppContainer} from "react-navigation"
-import {MainApp} from "./HomePage";
+import  {createFluidNavigator} from "react-navigation-fluid-transitions"
+import {HomePage} from "./HomePage";
 import {timeline} from "./Timeline";
-import PackagesPage from "./HomePage/packagespage";
 import {socialnetork} from "./Social";
 import {colors} from "../helpers/constants";
 import {profile} from "./Profile";
+import TourPage from "../components/virtual_tour/vrtour"
+import PageTwo from "./pagetwo"
 import Icon from "react-native-vector-icons/Ionicons"
+import PackagesPage from "./HomePage/packagespage";
+import {AddToTimeline} from "./Timeline/AddToTimeline";
+import CalendarDetails from "./HomePage/calendardetails";
+import {Authentication} from "./Authentication";
+import SplashScreen from "./SplachScreen/SplashScreen";
 
-const MainPageTabs = createAppContainer(createBottomTabNavigator({
+
+const HomeTabs = createAppContainer(createBottomTabNavigator({
 
         timeline:{
             screen:timeline,
@@ -22,8 +31,8 @@ const MainPageTabs = createAppContainer(createBottomTabNavigator({
             })
         },
         calendar:{
-            screen:MainApp,
-            navigationOptions: ({navigation, screenProps})=>({
+            screen:HomePage,
+            navigationOptions: ({navigation})=>({
 
                 header:null,
                 tabBarIcon : ({focused, tintColor}) => {
@@ -45,6 +54,7 @@ const MainPageTabs = createAppContainer(createBottomTabNavigator({
                 }
             })
         },
+
         me:{
             screen:profile,
             navigationOptions: ({navigation})=>({
@@ -67,4 +77,67 @@ const MainPageTabs = createAppContainer(createBottomTabNavigator({
         }
     }));
 
-export {MainPageTabs}
+
+
+const Navigator = createAppContainer(createFluidNavigator({
+
+        splashscreen:{
+            screen:SplashScreen,
+
+        },
+        authentication:{
+            screen:(({navigation})=><Authentication screenProps={navigation}/>),
+        },
+
+        home:{
+            screen: (({navigation})=><HomeTabs  screenProps={navigation}/>),
+            navigationOptions:({navigation})=>({
+                header:null})
+        },
+        pagetwo:{
+            screen:TourPage
+        },
+
+        packages:{
+            screen:PackagesPage,
+            navigationOptions: ({navigation})=>({
+                header:null
+            })
+        },
+        posttimeline:{
+            screen:AddToTimeline,
+            navigationOptions: ({navigation})=>({
+                tabBarVisible: false,
+                header:null
+            })
+        },
+        calenderdetails:{
+            screen:CalendarDetails,
+            navigationOptions: ({navigation})=>({
+                header:null
+            })
+        }
+
+    },
+    {
+        initialRouteName: "splashscreen"
+    }));
+
+
+class Navigation extends Component{
+    constructor(props) {
+        super(props);
+
+    }
+
+    render(){
+        return(
+            <View style={{flex:1}}>
+                <Navigator/>
+            </View>
+        )
+    }
+
+}
+
+export {Navigation}

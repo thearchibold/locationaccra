@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.github.yamill.orientation.OrientationPackage;
-import com.BV.LinearGradient.LinearGradientPackage;
 import com.corbt.keepawake.KCKeepAwakePackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.brentvatne.react.ReactVideoPackage;
@@ -30,7 +29,6 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new OrientationPackage(),
-            new LinearGradientPackage(),
             new KCKeepAwakePackage(),
            new RNGestureHandlerPackage(),
             new ReactVideoPackage(),

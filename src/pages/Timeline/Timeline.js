@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import {Animated, Platform, ScrollView, StyleSheet, Text, View} from "react-native"
+import {Animated, Platform, ScrollView, StyleSheet,Image, Text, View, TouchableNativeFeedback} from "react-native"
 import Icon from "react-native-vector-icons/Ionicons"
 import {colors} from "../../helpers/constants";
 import {Separator} from "../../components/separator";
@@ -60,7 +60,7 @@ class Timeline extends Component{
 
 
     render(){
-
+        //alert(JSON.stringify(this.props));
         const { clampedScroll } = this.state;
 
         const navbarTranslate = clampedScroll.interpolate({
@@ -92,6 +92,23 @@ class Timeline extends Component{
                     onMomentumScrollEnd={this._onMomentumScrollEnd}
                     onScrollEndDrag={this._onScrollEndDrag}
                 >
+
+
+                   <TouchableNativeFeedback
+                       onPress={()=>{
+                           this.props.screenProps.navigate("posttimeline");
+                       }}
+                   >
+                       <View
+
+                           style={{height:60, paddingLeft:8, flexDirection:'row', alignItems:'center', backgroundColor:'white',width:'100%', flex:1}}>
+                           <Image style={{height:52, width:40}} resizeMode={'center'} source={require("../../assets/img/slider1.jpeg")}/>
+                           <Text style={{fontSize:18,flex:1, color:"gray", margin:4}}>Whats ganging up...</Text>
+                       </View>
+                   </TouchableNativeFeedback>
+
+
+                    <Separator/>
 
                     <TimelineImage/>
 
@@ -169,7 +186,7 @@ class Timeline extends Component{
                 <Animated.View style={[styles.navbar, { transform: [{ translateY: navbarTranslate }] }]}>
                     <Animated.View style={[styles.title, { opacity: navbarOpacity }]}>
                         {/*<Image height={40} width={null} resizeMode={'cover'} source={require('../assets/img/logo.png')}/>*/}
-                        <Text style={{color:"white", fontSize:18}}>FEEDS</Text>
+                        <Text style={{color:"white", fontSize:18, letterSpacing: 1.5}}>TIMELINE</Text>
                     </Animated.View>
                 </Animated.View>
 

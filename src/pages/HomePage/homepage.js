@@ -58,7 +58,7 @@ class Homepage extends React.Component{
 
 
     render(){
-
+        //alert(JSON.stringify(this.props));
         const { clampedScroll } = this.state;
 
         const navbarTranslate = clampedScroll.interpolate({
@@ -122,7 +122,7 @@ class Homepage extends React.Component{
 
                         <Separator/>
                         <TouchableOpacity
-                            onPress={()=>{this.props.navigation.navigate('packages')}}
+                            onPress={()=>{this.props.screenProps.navigate("packages")}}
                             style={{
                                 margin: 16,
                                 height: 40,
@@ -167,7 +167,7 @@ class Homepage extends React.Component{
                         </View>
 
                         <TouchableOpacity
-                            onPress={()=>{this.props.navigation.navigate('calendardetails', {image:"slider3.jpg",id:"live"})}}
+                            onPress={()=>{this.props.screenProps.navigate('calenderdetails', {image:"slider3.jpg",id:"live"})}}
                             style={{padding:4 , flexDirection:'row', margin:4}}>
                             <View style={{height:40,margin:4, width:40, borderRadius:20, backgroundColor:colors.primarylight, justifyContent:'center', alignItems:'center'}}>
                                 <Text style={{color:'white', fontWeight:'bold'}}>24</Text>
@@ -192,7 +192,7 @@ class Homepage extends React.Component{
                         </TouchableOpacity>
 
                         <TouchableOpacity
-                            onPress={()=>{this.props.navigation.navigate('calendardetails',{id:"1920"})}}
+                            onPress={()=>{this.props.screenProps.navigate('calendardetails',{id:"1920"})}}
                             style={{padding:4 , flexDirection:'row', margin:4}}>
                             <View style={{height:40,margin:4, width:40, borderRadius:20, backgroundColor:colors.primarylight, justifyContent:'center', alignItems:'center'}}>
                                 <Text style={{color:'white', fontWeight:'bold'}}>25</Text>
@@ -393,7 +393,7 @@ class Homepage extends React.Component{
                 <Animated.View style={[styles.navbar, { transform: [{ translateY: navbarTranslate }] }]}>
                     <Animated.View style={[styles.title, { opacity: navbarOpacity }]}>
                         {/*<Image height={40} width={null} resizeMode={'cover'} source={require('../assets/img/logo.png')}/>*/}
-                        <Text style={{color:"white", fontSize:18}}>ACTIVITIES</Text>
+                        <Text style={{color:"white", fontSize:18, letterSpacing: 1.5}}>ACTIVITIES</Text>
                     </Animated.View>
                 </Animated.View>
 

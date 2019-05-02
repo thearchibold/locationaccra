@@ -1,28 +1,22 @@
 import {createAppContainer} from "react-navigation"
 import React, {Component} from "react"
+import {View} from "react-native"
 import {createFluidNavigator} from "react-navigation-fluid-transitions"
 
 import Homepage from "./homepage"
-import PageTwo from "../pagetwo"
 import PackagesPage from "./packagespage"
 import CalendarDetails from "./calendardetails"
 import TourPage from "../../components/virtual_tour/vrtour"
 import  MoodBoard from './moodboard'
 
-const MainApp = createAppContainer(createFluidNavigator({
+const HomePage = createAppContainer(createFluidNavigator({
     pageone:{
         screen:Homepage,
-        navigationOptions: ({navigation, screenProps})=>({
-            header:null
-        })
-    },
-    packages:{
-        screen:PackagesPage,
         navigationOptions: ({navigation})=>({
             header:null
         })
     },
-    pagetwo:PageTwo,
+
 
     calendardetails:{
         screen:CalendarDetails,
@@ -45,4 +39,6 @@ const MainApp = createAppContainer(createFluidNavigator({
     navigationOptions: { gesturesEnabled: true }
 }));
 
-export {MainApp}
+
+
+export {HomePage}

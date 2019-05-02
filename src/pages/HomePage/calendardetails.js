@@ -3,7 +3,6 @@ import {View, Image, TouchableOpacity, Text, ScrollView} from "react-native"
 import {Transition} from "react-navigation-fluid-transitions"
 import {colors} from "../../helpers/constants";
 import Icon from "react-native-vector-icons/FontAwesome"
-import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from "react-native-vector-icons/Ionicons"
 
 
@@ -24,13 +23,8 @@ export default  class CalendarDetails extends React.Component{
             <View style={{flex:1, backgroundColor:colors.primarydark, position:'relative'}}>
                 <View style={{height:260, position:'absolute', top:0, left:0,right:0, bottom:0}}>
                     <Transition shared={this.props.navigation.state.params.id}>
-                        <Image source={require(`../../assets/img/slider1.jpeg`)} style={{alignSelf:'center',height:260, resizeMode: 'cover'}}/>
                     </Transition>
-                    <LinearGradient colors={["rgba(255,255,255, 0)","rgba(255,255,255, 0)","rgba(255,255,255, 0)","rgba(255,255,255, 0)","rgba(157,0,7, 0.4)", colors.primarydark]} style={{
-                        height: 260,
-                        position: 'absolute',
-                        top: 0, left:0, right:0
-                    }}/>
+                   
                 </View>
 
                 <ScrollView style={{marginTop:260, flex:1,}}>

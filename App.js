@@ -1,13 +1,14 @@
 
 
 import React, {Component} from 'react';
-import {MainPageTabs} from "./src/pages/navigation";
+import {Navigation} from "./src/pages/navigation";
 
 
 export default  class App extends Component{
   render(){
+    console.disableYellowBox = true
     return(
-        <MainPageTabs/>
+        <Navigation/>
     )
   }
 }

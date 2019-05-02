@@ -7,7 +7,7 @@ const Separator = (props) =>{
    return(
        <View style={{
            height:props.height || 20,
-           backgroundColor:props.color || "#efefef",
+           backgroundColor:props.color || "whitesmoke",
            marginHorizontal:props.marginHorizontal || 0,
            marginVertical:props.marginVertical || 0
 
