@@ -3,6 +3,10 @@ package com.locationaccra;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.RNFetchBlob.RNFetchBlobPackage;
+import com.reactnativedocumentpicker.ReactNativeDocumentPicker;
+import com.reactnative.ivpusic.imagepicker.PickerPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.github.yamill.orientation.OrientationPackage;
 import com.corbt.keepawake.KCKeepAwakePackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
@@ -28,6 +32,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFetchBlobPackage(),
+            new ReactNativeDocumentPicker(),
+            new PickerPackage(),
+            new LinearGradientPackage(),
             new OrientationPackage(),
             new KCKeepAwakePackage(),
            new RNGestureHandlerPackage(),

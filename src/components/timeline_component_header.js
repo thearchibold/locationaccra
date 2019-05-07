@@ -9,12 +9,12 @@ import {Separator} from "./separator";
 const TimelineHeader = (props) => {
     return(
         <View>
-            <View style={{flexDirection: 'row', alignItems:'center', height:50,flex:1, paddingHorizontal:4, paddingVertical:8}}>
+            <View style={{flexDirection: 'row', alignItems:'center', height:50,flex:1, paddingHorizontal:4, paddingVertical:8, borderTopColor: 'gainsboro',borderTopWidth:0.5}}>
                 <View style={{height:40, width: 40, borderRadius:20, backgroundColor: 'gray', margin:4}}>
 
                 </View>
                 <View style={{flex:1, flexDirection:'column', justifyContent:'center'}}>
-                    <Text style={{fontWeight: 'bold', color:'#000', fontSize:14}}>Archibold Bernard</Text>
+                    <Text style={{fontWeight: 'bold', color:'#000', fontSize:14}}>Location Accra</Text>
                     <Text style={{ color:'#3b3b3b', fontSize:10}}>Tuesday, 12 June 2017  10:30am</Text>
                 </View>
                 <View style={{height:50, width:30, justifyContent:'center', alignItems:'center'}}>

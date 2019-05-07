@@ -94,9 +94,6 @@ const Navigator = createAppContainer(createFluidNavigator({
             navigationOptions:({navigation})=>({
                 header:null})
         },
-        pagetwo:{
-            screen:TourPage
-        },
 
         packages:{
             screen:PackagesPage,
@@ -113,6 +110,12 @@ const Navigator = createAppContainer(createFluidNavigator({
         },
         calenderdetails:{
             screen:CalendarDetails,
+            navigationOptions: ({navigation})=>({
+                header:null
+            })
+        },
+        tour:{
+            screen:TourPage,
             navigationOptions: ({navigation})=>({
                 header:null
             })

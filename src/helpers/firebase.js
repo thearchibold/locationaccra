@@ -1,4 +1,4 @@
-import * as firebase from 'firebase';
+import * as backend from 'firebase';
 
 let config = {
     apiKey: "AIzaSyAIuJtgUVavfWtIDXF6-5SB_C66sIheaLQ",
@@ -8,6 +8,7 @@ let config = {
     storageBucket: "location-accra.appspot.com",
     messagingSenderId: "49551940158"
 };
-firebase.initializeApp(config);
 
-export {firebase}
+backend.initializeApp(config);
+
+export { backend }

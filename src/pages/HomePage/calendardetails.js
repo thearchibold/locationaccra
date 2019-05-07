@@ -18,13 +18,15 @@ export default  class CalendarDetails extends React.Component{
     }
 
     render(){
+       // alert(JSON.stringify(this.props))
 
         return(
             <View style={{flex:1, backgroundColor:colors.primarydark, position:'relative'}}>
                 <View style={{height:260, position:'absolute', top:0, left:0,right:0, bottom:0}}>
                     <Transition shared={this.props.navigation.state.params.id}>
+                        <Image source={require("../../assets/img/slider3.jpg")} style={{height:260, width:'100%', resizeMode:'center'}}/>
                     </Transition>
-                   
+
                 </View>
 
                 <ScrollView style={{marginTop:260, flex:1,}}>

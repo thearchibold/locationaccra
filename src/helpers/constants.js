@@ -6,6 +6,7 @@ export const colors ={
 }
 
 export const url = {
+    USERS:"/users",
     TIMELINE :"/timeline",
     PROFILE : "/profile",
     COLLECTIONS : "/collections",

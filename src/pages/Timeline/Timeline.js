@@ -1,9 +1,12 @@
 import React, {Component} from "react"
-import {Animated, Platform, ScrollView, StyleSheet,Image, Text, View, TouchableNativeFeedback} from "react-native"
+import {Animated, Platform, ScrollView, StyleSheet,Image, Text, View, TouchableNativeFeedback, FlatList} from "react-native"
 import Icon from "react-native-vector-icons/Ionicons"
-import {colors} from "../../helpers/constants";
+import {colors, url} from "../../helpers/constants";
 import {Separator} from "../../components/separator";
 import {TimelineImage, TimelineText, TimelineVideo} from "../../components/timeline_components";
+import { backend } from "../../helpers/firebase";
+
+
 
 
 const NAVBAR_HEIGHT = 50;
@@ -23,6 +26,7 @@ class Timeline extends Component{
         const offsetAnim = new Animated.Value(0);
 
         this.state = {
+            timelinedata:[],
             scrollAnim,
             offsetAnim,
             clampedScroll: Animated.diffClamp(
@@ -41,6 +45,20 @@ class Timeline extends Component{
         }
     }
 
+    componentWillMount(){
+        let temp = this.state.timelinedata
+        backend.database().ref().child(url.TIMELINE).on('child_added',(snapshot)=>{
+            //this.setState({timelinedata:snapshot.val})
+            
+            temp.push({
+                key:snapshot.key,
+                value:snapshot.val()
+            })
+
+            this.setState({timelinedata:temp})
+        })
+        
+    }
 
 
     componentDidMount(){
@@ -101,80 +119,41 @@ class Timeline extends Component{
                    >
                        <View
 
-                           style={{height:60, paddingLeft:8, flexDirection:'row', alignItems:'center', backgroundColor:'white',width:'100%', flex:1}}>
+                           style={{height:60, paddingLeft:8, flexDirection:'row', alignItems:'center', backgroundColor:'white',width:'100%', flex:1, borderBottomWidth:0.5, borderBottomColor:'gainsboro'}}>
                            <Image style={{height:52, width:40}} resizeMode={'center'} source={require("../../assets/img/slider1.jpeg")}/>
                            <Text style={{fontSize:18,flex:1, color:"gray", margin:4}}>Whats ganging up...</Text>
                        </View>
+
+
                    </TouchableNativeFeedback>
-
-
-                    <Separator/>
-
-                    <TimelineImage/>
-
-                    <Separator/>
-
-                    <TimelineText/>
-
-                    <Separator/>
-
-                    <TimelineVideo/>
-
-                    <Separator/>
-
-                    <TimelineText/>
-
-                    <Separator/>
-
-                    <TimelineVideo/>
+                   <Separator/>
+                   <FlatList
+                   extraData={this.state}
+                   data={this.state.timelinedata}
+                   keyExtractor={(item, index)=> {return index.toString}}
+                   renderItem={({item})=>{
+                       console.log(item)
+                       if(item.value.type === 'text'){
+                        return(<TimelineText data={item.value}/>)
+                       }
+                       if(item.value.type === 'image'){
+                        return(<TimelineImage data={item.value}/>)
+                       }
+                   }}
+                   ItemSeparatorComponent={()=> <Separator/>}
+                   />
+                    
 
                     <Separator/>
 
-                    <View>
-                        <View style={{flexDirection: 'row', alignItems:'center', height:50,flex:1, paddingHorizontal:4}}>
-                            <View style={{height:40, width: 40, borderRadius:20, backgroundColor: 'orangered', margin:4}}>
-
-                            </View>
-                            <View style={{flex:1, flexDirection:'column', justifyContent:'center'}}>
-                                <Text style={{fontWeight: 'bold', color:'#000', fontSize:14}}>Minty Nana Ekua</Text>
-                                <Text style={{ color:'#3b3b3b', fontSize:10}}>Tuesday, 12 June 2017  10:30am</Text>
-                            </View>
-                            <View style={{height:50, width:30, justifyContent:'center', alignItems:'center'}}>
-                                <Icon name={Platform.OS === "android" ? "md-more" : "ios-more"} size={24} color={colors.primary}/>
-                            </View>
-                        </View>
-
-                        <Text style={{fontSize:18, color:'black', margin:6}}>Who is rocking this years afrochella. Mann that shid will be crazy</Text>
-
-
-                        <View style={{height:50, flexDirection:'row', alignItems:'center', padding:4}}>
-                            <View style={{flexDirection:'row', flex:1}}>
-                                <Icon name={"ios-heart"} color={"gainsboro"} size={24}/>
-                                <Text style={{margin:2}}>20 interested</Text>
-                            </View>
-
-                            <View style={{flexDirection:'row', flex:1}}>
-                                <Icon name={"md-chatboxes"} color={"gainsboro"} size={24}/>
-                                <Text style={{margin:2}}>40 comments</Text>
-                            </View>
-                            <View style={{flexDirection:'row', flex:1}}>
-                                <Icon name={"ios-heart"} color={"gainsboro"} size={24}/>
-                            </View>
-                        </View>
-                    </View>
-
-
-                    <Separator/>
-
-                    <TimelineImage/>
-
-                    <Separator/>
-
-                    <TimelineText/>
+                    {/* <TimelineText/>
 
                     <Separator/>
 
                     <TimelineVideo/>
+
+                    <Separator/> */}
+
 
 
 

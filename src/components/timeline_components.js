@@ -57,7 +57,7 @@ const TimelineText = (props) =>{
         <View>
             <TimelineHeader/>
 
-            <Text style={{fontSize:18, color:'black', margin:6}}>Who is rocking this years afrochella. Mann that shid will be crazy</Text>
+            <Text style={{fontSize:18, color:'black', margin:6}}>{props.data.text}</Text>
 
 
             <View style={{
@@ -98,7 +98,7 @@ const TimelineImage = (props) => {
 
             {/*message body*/}
             <View style={{height:240, backgroundColor:'green', overflow: 'hidden'}}>
-                <Image source={require("../assets/img/slider1.jpeg")} style={{height:240,width:'100%', resizeMode:'cover'}}/>
+                <Image source={{uri: props.data.url}} style={{height:240,width:'100%', resizeMode:'cover'}}/>
 
             </View>
             <Text style={{margin:6, fontStyle:'normal', color:'#686868'}}>A small comment about the picture or image goes in here</Text>

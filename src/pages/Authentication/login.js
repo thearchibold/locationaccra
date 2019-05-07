@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import {View, Text, Image, TextInput, TouchableOpacity, ScrollView, Dimensions, ActivityIndicator} from "react-native"
+import {View, Text, Image, TextInput, TouchableOpacity, ScrollView, Dimensions, ActivityIndicator, ToastAndroid, AsyncStorage} from "react-native"
 import Transition from "react-navigation-fluid-transitions/TransitionView";
 import {colors} from "../../helpers/constants";
 import Icon from "react-native-vector-icons/Ionicons"
@@ -15,29 +15,23 @@ class LoginPage extends Component {
 
         this.state={
             email:"",
-            password:""
-        }
+            password:"",
+            login:false
+        };
 
         console.log(this.props);
     }
-
+     
+    
 
     render(){
         return(
+    
             <ScrollView
-                contentContainerStyle={{height:height, backgroundColor:'white'}}>
+
+                contentContainerStyle={{height,justifyContent:'center', backgroundColor:'white'}}>
                 <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-                    <TouchableOpacity
-
-                    style={{position:'absolute', top:16, right:16,height:25,width:80, borderWidth:1, borderColor:colors.primarydark,borderRadius:15,justifyContent:'center', alignItems:'center'}}
-                    >
-                    <Text
-                        onPress={()=>{this.props.navigation.navigate("register")}}
-                        style={{
-                            fontWeight:'bold', color:colors.primarydark
-                        }}>Sign Up</Text>
-
-                    </TouchableOpacity>
+                    
                     <Transition shared='circle'>
                         <Image style={{height:100,width:100, resizeMode:'contain'}} source={require('../../assets/img/logo.png')}/>
                     </Transition>
@@ -49,7 +43,7 @@ class LoginPage extends Component {
                         <TextInput
                             keyboardType={"email-address"}
                             value={this.state.email}
-                            onChange={(value)=>{
+                            onChangeText={(value)=>{
                                 this.setState({email:value})
                             }}
                             style={{borderBottomColor:"gainsboro", borderBottomWidth:1}}
@@ -60,11 +54,12 @@ class LoginPage extends Component {
                     <View style={{margin:8}}>
                         <Text style={{color:'black', fontWeight:'bold', marginLeft:4, fontSize:16}}>Password</Text>
                         <TextInput
-                            onChange={(value)=>{
+                            onChangeText={(value)=>{
                                 this.setState({password:value})
                             }}
                             value={this.state.password}
-                            secureTextEntry={true}
+                            keyboardType={"visible-password"}
+                            secureTextEntry
                             style={{borderBottomColor:"gainsboro", borderBottomWidth:1}}
                             placeholder={"*********"}/>
                     </View>
@@ -74,22 +69,69 @@ class LoginPage extends Component {
                         <TouchableOpacity
                             onPress={()=>{
                                 this.props.screenProps.navigate("home");
+                                //this.setState({login:true});
+                                //this.login()
                             }}
                             style={{borderRadius:30,height:60, width:60, backgroundColor:colors.primarydark, justifyContent:'center', alignItems:'center'}}>
-                            <Icon name={"ios-arrow-round-forward"} color={"white"} size={24}/>
+                            {
+                                !this.state.login ? <Icon name={"ios-arrow-round-forward"} color={"white"} size={24}/> :
+                                    <ActivityIndicator color={"white"}/>
+                            }
                         </TouchableOpacity>
                     </View>
+                    <TouchableOpacity
+                        onPress={()=>{this.props.navigation.navigate("register")}}
+                        style={{height:40,margin:8, borderWidth:1, borderColor:colors.primarydark,borderRadius:20,justifyContent:'center', alignItems:'center'}}
+                        >
+                        <Text
+                            
+                            style={{
+                                fontWeight:'bold', color:colors.primarydark, fontSize:16,margin:8
+                            }}>Sign Up</Text>
 
+                        </TouchableOpacity>
                 
                 </View>
+
+                
                 
             </ScrollView>
+           
         )
     }
 
-    login = (email, password) => {
-        //backend.auth.
+    login = () => {
+        
+        let {email, password} = this.state;
+        backend.auth().setPersistence(backend.auth.Auth.Persistence.LOCAL)
+            .then(() => {
+                backend.auth().signInWithEmailAndPassword(String(email),String(password)).then(data=>{
+                    ToastAndroid.show("signing in", 1000);
+                    console.log(data.user.uid)
+                    this.props.screenProps.navigate("home");
+                    this._storeData(data.user.uid)
+                    this.setState({login:false})
+                   //
+                }).catch(error=>{
+                    console.log(error);
+                    this.setState({login:false})
+                });
+
+            })
+            .catch(function(error) {
+                this.setState({login:false})
+            });
+
     }
+
+
+    _storeData = async (key) => {
+        try {
+          await AsyncStorage.setItem('user', String(key));
+        } catch (error) {
+          
+        }
+      };
 
 }
 
