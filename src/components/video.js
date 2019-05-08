@@ -1,20 +1,29 @@
 import React from "react";
 import {View, StyleSheet } from "react-native"
 import Video from "react-native-af-video-player"
+import InViewPort from 'react-native-inviewport' 
 
 export default class VideoPlayer extends React.Component{
 
     constructor(props) {
         super(props);
-
+        this.state = {
+            play :false
+        }
     }
 
+   
     render(){
+       
+        
         return(
             <View style={styles.container}>
-                <Video
-                    title={"Party on bus"}
-                    url={require('./../assets/video/video1.mp4')} />
+               
+                    <Video
+                        ref={(ref) => { this.video = ref }}
+                        title={"Party on bus"}
+                        url={require('./../assets/video/video1.mp4')} />
+               
             </View>
         )
     }

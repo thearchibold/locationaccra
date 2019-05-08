@@ -47,9 +47,9 @@ class Timeline extends Component{
 
     componentWillMount(){
         let temp = this.state.timelinedata
-        backend.database().ref().child(url.TIMELINE).on('child_added',(snapshot)=>{
+        backend.database().ref().child(url.TIMELINE).on('value',(snapshot)=>{
             //this.setState({timelinedata:snapshot.val})
-            
+           //alert(snapshot.key)
             temp.push({
                 key:snapshot.key,
                 value:snapshot.val()
@@ -120,7 +120,7 @@ class Timeline extends Component{
                        <View
 
                            style={{height:60, paddingLeft:8, flexDirection:'row', alignItems:'center', backgroundColor:'white',width:'100%', flex:1, borderBottomWidth:0.5, borderBottomColor:'gainsboro'}}>
-                           <Image style={{height:52, width:40}} resizeMode={'center'} source={require("../../assets/img/slider1.jpeg")}/>
+                           <Image style={{height:40,borderRadius:4, width:40}} resizeMode={'cover'} source={require("../../assets/img/slider1.jpeg")}/>
                            <Text style={{fontSize:18,flex:1, color:"gray", margin:4}}>Whats ganging up...</Text>
                        </View>
 
@@ -165,7 +165,7 @@ class Timeline extends Component{
                 <Animated.View style={[styles.navbar, { transform: [{ translateY: navbarTranslate }] }]}>
                     <Animated.View style={[styles.title, { opacity: navbarOpacity }]}>
                         {/*<Image height={40} width={null} resizeMode={'cover'} source={require('../assets/img/logo.png')}/>*/}
-                        <Text style={{color:"white", fontSize:18, letterSpacing: 1.5}}>TIMELINE</Text>
+                        <Text style={{color:"white",textAlignVertical:'center', fontSize:18, letterSpacing: 1.5}}>TIMELINE</Text>
                     </Animated.View>
                 </Animated.View>
 
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         height: NAVBAR_HEIGHT,
         justifyContent:"center",
-        paddingTop:12,
+        alignItems:'center',
         paddingLeft:8,
         paddingRight:8,
         shadowOffset: {
@@ -227,7 +227,6 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.20,
         shadowRadius: 1.41,
-
         elevation: 2,
     },
     title:{

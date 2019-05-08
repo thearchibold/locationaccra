@@ -1,6 +1,7 @@
 import React,{Component} from "react"
-import {View, Text, Animated, ScrollView, StyleSheet} from "react-native"
+import {View, Text, Animated, ScrollView, StyleSheet, Image, TextInput} from "react-native"
 import {colors} from "../../helpers/constants";
+import { Separator } from "../../components/separator";
 
 
 
@@ -90,7 +91,51 @@ class SocialNetwork extends Component{
                     onMomentumScrollEnd={this._onMomentumScrollEnd}
                     onScrollEndDrag={this._onScrollEndDrag}
                 >
+                
+                <View style={{height:30,marginTop:8,marginHorizontal:8, borderRadius:20, backgroundColor:'gainsboro'}}>
+                    <TextInput placeholder="Search gengs" underlineColorAndroid="transparent"/>
+                </View>
 
+                <View style={{height:80, margin:4, flexDirection:'row',alignItems: 'center',}}>
+                  <Image style={{height:60, width:60, borderRadius:4, resizeMode:'cover'}} source={require("../../assets/img/slider1.jpeg")}/>
+                  <View style={{justifyContent:'center', margin:8}}>
+                     <Text style={{fontSize:16, fontWeight:'bold'}}>The UK gengs</Text>
+                     <Text>the ghana-uk experience</Text>
+                     <Text style={{fontSize:12}}><Text style={{fontWeight:'bold'}}>30</Text> members</Text>
+                  </View>
+                </View>
+                <Separator height={1}/>
+
+                <View style={{height:80, margin:4, flexDirection:'row',alignItems: 'center',}}>
+                  <Image style={{height:60, width:60, borderRadius:4, resizeMode:'cover'}} source={require("../../assets/img/slider1.jpeg")}/>
+                  <View style={{justifyContent:'center', margin:8}}>
+                     <Text style={{fontSize:16, fontWeight:'bold'}}>The UK gengs</Text>
+                     <Text>the ghana-uk experience</Text>
+                     <Text style={{fontSize:12}}><Text style={{fontWeight:'bold'}}>30</Text> members</Text>
+                  </View>
+                </View>
+
+                <Separator height={1}/>
+
+                <View style={{height:80, margin:4, flexDirection:'row',alignItems: 'center',}}>
+                  <Image style={{height:60, width:60, borderRadius:4, resizeMode:'cover'}} source={require("../../assets/img/slider1.jpeg")}/>
+                  <View style={{justifyContent:'center', margin:8}}>
+                     <Text style={{fontSize:16, fontWeight:'bold'}}>The UK gengs</Text>
+                     <Text>the ghana-uk experience</Text>
+                     <Text style={{fontSize:12}}><Text style={{fontWeight:'bold'}}>30</Text> members</Text>
+                  </View>
+                </View>
+
+                <Separator height={1}/>
+
+                <View style={{height:80, margin:4, flexDirection:'row',alignItems: 'center',}}>
+                  <Image style={{height:60, width:60, borderRadius:4, resizeMode:'cover'}} source={require("../../assets/img/slider1.jpeg")}/>
+                  <View style={{justifyContent:'center', margin:8}}>
+                     <Text style={{fontSize:16, fontWeight:'bold'}}>The UK gengs</Text>
+                     <Text>the ghana-uk experience</Text>
+                     <Text style={{fontSize:12}}><Text style={{fontWeight:'bold'}}>30</Text> members</Text>
+                  </View>
+                </View>
                 </AnimatedListView>
 
 
@@ -98,7 +143,7 @@ class SocialNetwork extends Component{
                 <Animated.View style={[styles.navbar, { transform: [{ translateY: navbarTranslate }] }]}>
                     <Animated.View style={[styles.title, { opacity: navbarOpacity }]}>
                         {/*<Image height={40} width={null} resizeMode={'cover'} source={require('../assets/img/logo.png')}/>*/}
-                        <Text style={{color:"white", fontSize:18, letterSpacing: 1.5}}>GENGS</Text>
+                        <Text style={{color:"white",textAlignVertical:'center', fontSize:18, letterSpacing: 1.5}}>GENGS</Text>
                     </Animated.View>
                 </Animated.View>
 
@@ -151,7 +196,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         height: NAVBAR_HEIGHT,
         justifyContent:"center",
-        paddingTop:12,
+    
         paddingLeft:8,
         paddingRight:8,
         shadowOffset: {

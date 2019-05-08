@@ -35,8 +35,6 @@ class AddToTimeline extends Component{
                     onPress={()=>{
                         if(this.state.contentSelected){
                             let {path, mime} = this.state.images[0];
-
-
                             const Blob = RNFetchBlob.polyfill.Blob
                             const fs = RNFetchBlob.fs
                             window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
@@ -80,7 +78,7 @@ class AddToTimeline extends Component{
                                         this.props.navigation.goBack();                                      
                                       })
                                       .catch((error) => {
-                                        console.log(error);
+                                        //console.log(error);
                                 
                                       })  
                          

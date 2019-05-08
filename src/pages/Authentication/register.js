@@ -26,7 +26,7 @@ class RegisterPage extends Component {
 
     render() {
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, backgroundColor:'white'}}>
                 <TouchableOpacity
                     onPress={() => {
                         this.props.navigation.goBack()
