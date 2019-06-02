@@ -1,3 +1,4 @@
 <resources>
+	<string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey"> 0f945c46-2bf2-416e-a455-012cc7261fab</string>
     <string name="app_name">Location Accra</string>
 </resources>

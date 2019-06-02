@@ -5562,11 +5562,6 @@ react-native-image-crop-picker@^0.24.0:
   resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.24.0.tgz#df101548f72951bf66e560887af73b11f328bdd0"
   integrity sha512-AES/iOkcF72IMVSR8BP3mLvjh9OjhxyjL7YGgxJGRbc79/ThawcJAuNUb32IYddKjtfK6LbtY/ZNzI4TN9Cu7g==
 
-react-native-inviewport@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-inviewport/-/react-native-inviewport-1.1.0.tgz#36776b09f00354dddbb4b07099f49149440da567"
-  integrity sha1-NndrCfADVN3btLBwmfSRSUQNpWc=
-
 react-native-keep-awake@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/react-native-keep-awake/-/react-native-keep-awake-2.0.6.tgz#d8eaffe0a6377cc197469d9f06c7f317225403db"

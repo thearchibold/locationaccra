@@ -107,9 +107,9 @@ class LoginPage extends Component {
             .then(() => {
                 backend.auth().signInWithEmailAndPassword(String(email),String(password)).then(data=>{
                     ToastAndroid.show("signing in", 1000);
-                    console.log(data.user.uid)
+                    console.log(data.user.uid);
                     this.props.screenProps.navigate("home");
-                    this._storeData(data.user.uid)
+                    this._storeData(data.user.uid);
                     this.setState({login:false})
                    //
                 }).catch(error=>{

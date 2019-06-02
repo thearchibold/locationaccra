@@ -1,7 +1,7 @@
 import React from "react";
 import {View, StyleSheet } from "react-native"
 import Video from "react-native-af-video-player"
-import InViewPort from 'react-native-inviewport' 
+
 
 export default class VideoPlayer extends React.Component{
 

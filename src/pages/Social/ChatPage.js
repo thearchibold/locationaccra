@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {colors} from "../../helpers/constants";
+import Icon from "react-native-vector-icons/Ionicons"
+import {BackButton} from "../../components/BackButton";
 
-export default class componentName extends Component {
+export default class ChatPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,17 +14,21 @@ export default class componentName extends Component {
   render() {
     return (
       <View style={{flex:1, backgroundColor:'white'}}>
-        <View style={styles.navbar }>
-                    <View style={[styles.title, { opacity: navbarOpacity }]}>
-                        {/*<Image height={40} width={null} resizeMode={'cover'} source={require('../assets/img/logo.png')}/>*/}
-                        <Text style={{color:"white",textAlignVertical:'center', fontSize:18, letterSpacing: 1.5}}>GENGS</Text>
-                    </View>
+        <View style={{height:50, flexDirection:'row', alignItems:'center', backgroundColor:colors.primary}}>
+            <BackButton navigation={this.props.navigation} color={"white"}/>
+            <View style={{flexDirection:'row', flex:1, alignItems:'center'}}>
+                <View style={{height:30, width: 30, borderRadius:20, backgroundColor:'red'}}>
                 </View>
+                <Text style={{color:"white", fontWeight: 'bold', marginLeft:8, fontSize:16}}>Group name</Text>
+            </View>
+            <TouchableOpacity style={{width:40, justifyContent: 'center', alignItems:'center'}}>
+                <Icon name={"md-more"} color={"white"} allowFontScaling={true} size={24}/>
+            </TouchableOpacity>
+        </View>
       </View>
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   navbar: {
@@ -33,7 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     borderBottomColor: colors.primary,
     borderBottomWidth: 1,
-    height: NAVBAR_HEIGHT,
+    height: 50,
     justifyContent:"center",
 
     paddingLeft:8,
@@ -44,4 +51,4 @@ const styles = StyleSheet.create({
     }
 }
 }
-)
+);

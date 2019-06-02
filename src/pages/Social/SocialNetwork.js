@@ -1,7 +1,8 @@
 import React,{Component} from "react"
-import {View, Text, Animated, ScrollView, StyleSheet, Image, TextInput} from "react-native"
+import {View, Text, Animated, ScrollView, StyleSheet, Image, TextInput, TouchableOpacity} from "react-native"
 import {colors} from "../../helpers/constants";
 import { Separator } from "../../components/separator";
+import  Icon from "react-native-vector-icons/Ionicons"
 
 
 
@@ -45,6 +46,7 @@ class SocialNetwork extends Component{
 
 
     componentDidMount(){
+        console.log(this.props);
         this.state.scrollAnim.addListener(({ value }) => {
             // This is the same calculations that diffClamp does.
             const diff = value - this._scrollValue;
@@ -77,7 +79,7 @@ class SocialNetwork extends Component{
         });
 
         return(
-            <View style={{flex:1}}>
+            <View style={{flex:1, backgroundColor:'white'}}>
 
 
                 <AnimatedListView
@@ -93,17 +95,20 @@ class SocialNetwork extends Component{
                 >
                 
                 <View style={{height:30,marginTop:8,marginHorizontal:8, borderRadius:20, backgroundColor:'gainsboro'}}>
-                    <TextInput placeholder="Search gengs" underlineColorAndroid="transparent"/>
+                    <TextInput placeholder="Search gengs" underlineColorAndroid="transparent" />
                 </View>
 
-                <View style={{height:80, margin:4, flexDirection:'row',alignItems: 'center',}}>
+                <TouchableOpacity
+                    onPress = {()=>{this.props.screenProps.navigate("gengchat")}}
+                    style={{height:80, margin:4, flexDirection:'row',alignItems: 'center',}}>
                   <Image style={{height:60, width:60, borderRadius:4, resizeMode:'cover'}} source={require("../../assets/img/slider1.jpeg")}/>
                   <View style={{justifyContent:'center', margin:8}}>
                      <Text style={{fontSize:16, fontWeight:'bold'}}>The UK gengs</Text>
                      <Text>the ghana-uk experience</Text>
                      <Text style={{fontSize:12}}><Text style={{fontWeight:'bold'}}>30</Text> members</Text>
                   </View>
-                </View>
+                </TouchableOpacity>
+
                 <Separator height={1}/>
 
                 <View style={{height:80, margin:4, flexDirection:'row',alignItems: 'center',}}>
@@ -136,9 +141,20 @@ class SocialNetwork extends Component{
                      <Text style={{fontSize:12}}><Text style={{fontWeight:'bold'}}>30</Text> members</Text>
                   </View>
                 </View>
+
                 </AnimatedListView>
 
-
+                <TouchableOpacity
+                    onPress={()=>{
+                        this.props.screenProps.navigate("creategeng")
+                    }}
+                    style={{
+                    justifyContent:'center',
+                    alignItems:'center',
+                    height:50, width:50,
+                    borderRadius:30, backgroundColor:colors.primarydark, position: 'absolute', right:16, bottom:16}}>
+                    <Icon name={"ios-add"} color={"white"} size={28}/>
+                </TouchableOpacity>
 
                 <Animated.View style={[styles.navbar, { transform: [{ translateY: navbarTranslate }] }]}>
                     <Animated.View style={[styles.title, { opacity: navbarOpacity }]}>

@@ -13,7 +13,7 @@ const BackButton = (props) => {
                 props.navigation.goBack();
             }}
             style={styles.icon_btn}>
-            <Icon name={"ios-arrow-back"} size={24} color={colors.primarydark}/>
+            <Icon name={"ios-arrow-back"} size={24} color={props.color || colors.primarydark}/>
         </TouchableOpacity>
     )
 };

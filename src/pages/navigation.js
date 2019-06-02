@@ -15,6 +15,8 @@ import {AddToTimeline} from "./Timeline/AddToTimeline";
 import CalendarDetails from "./HomePage/calendardetails";
 import {Authentication} from "./Authentication";
 import SplashScreen from "./SplachScreen/SplashScreen";
+import  ChatPage from "./Social/ChatPage"
+import {CreateGeng} from "./Social/CreateGeng";
 
 
 const HomeTabs = createAppContainer(createBottomTabNavigator({
@@ -116,6 +118,18 @@ const Navigator = createAppContainer(createFluidNavigator({
         },
         tour:{
             screen:TourPage,
+            navigationOptions: ({navigation})=>({
+                header:null
+            })
+        },
+        gengchat:{
+            screen:ChatPage,
+            navigationOptions: ({navigation})=>({
+                header:null
+            })
+        },
+        creategeng:{
+            screen:CreateGeng,
             navigationOptions: ({navigation})=>({
                 header:null
             })
