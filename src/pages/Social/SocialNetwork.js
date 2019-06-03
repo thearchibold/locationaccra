@@ -1,8 +1,10 @@
 import React,{Component} from "react"
-import {View, Text, Animated, ScrollView, StyleSheet, Image, TextInput, TouchableOpacity} from "react-native"
+import {View, Text, Animated, ScrollView, StyleSheet, Image, TextInput, TouchableOpacity, FlatList} from "react-native"
 import {colors} from "../../helpers/constants";
 import { Separator } from "../../components/separator";
 import  Icon from "react-native-vector-icons/Ionicons"
+import Geng from "../../components/Geng";
+import { getAllGengs } from "../../helpers/functions";
 
 
 
@@ -25,6 +27,7 @@ class SocialNetwork extends Component{
         const offsetAnim = new Animated.Value(0);
 
         this.state = {
+            gengs:[],
             scrollAnim,
             offsetAnim,
             clampedScroll: Animated.diffClamp(
@@ -41,6 +44,13 @@ class SocialNetwork extends Component{
             ),
 
         }
+    }
+
+    componentWillMount() {
+        getAllGengs().then(data => {
+            console.log("social ", data)
+            this.setState({gengs:data})
+        });
     }
 
 
@@ -79,7 +89,7 @@ class SocialNetwork extends Component{
         });
 
         return(
-            <View style={{flex:1, backgroundColor:'white'}}>
+            <View style={{flex:1, backgroundColor:'white', height:'100%'}}>
 
 
                 <AnimatedListView
@@ -94,54 +104,33 @@ class SocialNetwork extends Component{
                     onScrollEndDrag={this._onScrollEndDrag}
                 >
                 
-                <View style={{height:30,marginTop:8,marginHorizontal:8, borderRadius:20, backgroundColor:'gainsboro'}}>
-                    <TextInput placeholder="Search gengs" underlineColorAndroid="transparent" />
-                </View>
+                    <TouchableOpacity
+                        onPress={()=>{this.props.screenProps.navigate("searchgeng")}}
+                        style={{ height: 46, flexDirection: 'row', alignItems: 'center', padding: 16 }}>
+                        <Icon name={"ios-search"} size={24} color={colors.primary}/>
+                        <Text style={{marginLeft: 8, fontSize:16}}>Search gengs</Text>
+                    </TouchableOpacity>
+                    
+                    <View style={{ backgroundColor: 'whitesmoke', height: 40, justifyContent: 'center', padding: 8 }}>
+                        <Text style={{color:colors.primarydark, fontWeight:'bold'}}>My Gengs</Text>
 
-                <TouchableOpacity
-                    onPress = {()=>{this.props.screenProps.navigate("gengchat")}}
-                    style={{height:80, margin:4, flexDirection:'row',alignItems: 'center',}}>
-                  <Image style={{height:60, width:60, borderRadius:4, resizeMode:'cover'}} source={require("../../assets/img/slider1.jpeg")}/>
-                  <View style={{justifyContent:'center', margin:8}}>
-                     <Text style={{fontSize:16, fontWeight:'bold'}}>The UK gengs</Text>
-                     <Text>the ghana-uk experience</Text>
-                     <Text style={{fontSize:12}}><Text style={{fontWeight:'bold'}}>30</Text> members</Text>
-                  </View>
-                </TouchableOpacity>
+                    </View>
 
-                <Separator height={1}/>
+                    <FlatList
+                        style={{borderTopColor: 'gainsboro',borderTopWidth: 1,}}
+                        data={this.state.gengs}
+                        keyExtractor={(_item, index) => { return String(index) }}
+                        renderItem={({ item, _index }) => {
+                            return <Geng navigation={this.props.screenProps} data={item}/>
+                        }}
+                        
+                    />                   
 
-                <View style={{height:80, margin:4, flexDirection:'row',alignItems: 'center',}}>
-                  <Image style={{height:60, width:60, borderRadius:4, resizeMode:'cover'}} source={require("../../assets/img/slider1.jpeg")}/>
-                  <View style={{justifyContent:'center', margin:8}}>
-                     <Text style={{fontSize:16, fontWeight:'bold'}}>The UK gengs</Text>
-                     <Text>the ghana-uk experience</Text>
-                     <Text style={{fontSize:12}}><Text style={{fontWeight:'bold'}}>30</Text> members</Text>
-                  </View>
-                </View>
 
-                <Separator height={1}/>
+               
+                    
 
-                <View style={{height:80, margin:4, flexDirection:'row',alignItems: 'center',}}>
-                  <Image style={{height:60, width:60, borderRadius:4, resizeMode:'cover'}} source={require("../../assets/img/slider1.jpeg")}/>
-                  <View style={{justifyContent:'center', margin:8}}>
-                     <Text style={{fontSize:16, fontWeight:'bold'}}>The UK gengs</Text>
-                     <Text>the ghana-uk experience</Text>
-                     <Text style={{fontSize:12}}><Text style={{fontWeight:'bold'}}>30</Text> members</Text>
-                  </View>
-                </View>
-
-                <Separator height={1}/>
-
-                <View style={{height:80, margin:4, flexDirection:'row',alignItems: 'center',}}>
-                  <Image style={{height:60, width:60, borderRadius:4, resizeMode:'cover'}} source={require("../../assets/img/slider1.jpeg")}/>
-                  <View style={{justifyContent:'center', margin:8}}>
-                     <Text style={{fontSize:16, fontWeight:'bold'}}>The UK gengs</Text>
-                     <Text>the ghana-uk experience</Text>
-                     <Text style={{fontSize:12}}><Text style={{fontWeight:'bold'}}>30</Text> members</Text>
-                  </View>
-                </View>
-
+               
                 </AnimatedListView>
 
                 <TouchableOpacity

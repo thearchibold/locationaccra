@@ -1,15 +1,23 @@
 import React, {Component} from "react"
-import {View, Text, TextInput, TouchableOpacity, ScrollView} from "react-native"
+import {View, Text, TextInput, TouchableOpacity, ScrollView, ActivityIndicator} from "react-native"
 import {colors} from "../../helpers/constants";
 import {BackButton} from "../../components/BackButton";
 import Icon from "react-native-vector-icons/Ionicons"
+import { backend } from "../../helpers/firebase";
 
 
 
 class CreateGeng extends Component {
     constructor(props){
         super(props);
-        console.log("create geng", this.props)
+        console.log("create geng", this.props);
+        this.state = {
+            name: "",
+            desc: "",
+            image: "",
+            hasPickedImage: false,
+            loading:false
+        }
     }
     render(){
         return(
@@ -30,9 +38,9 @@ class CreateGeng extends Component {
                     <View style={{margin:8}}>
                         <Text style={{color:'black', fontWeight:'bold', marginLeft:4, fontSize:16}}>Group name</Text>
                         <TextInput
-                            keyboardType={"email-address"}
+                            keyboardType={"default"}
                             onChangeText={(value)=>{
-                                this.setState({email:value})
+                                this.setState({name:value})
                             }}
                             style={{borderBottomColor:"gainsboro", borderBottomWidth:1}}
                             underlineAndroid={colors.primarydark}
@@ -42,9 +50,9 @@ class CreateGeng extends Component {
                     <View style={{margin:8}}>
                         <Text style={{color:'black', fontWeight:'bold', marginLeft:4, fontSize:16}}>Group description</Text>
                         <TextInput
-                            keyboardType={"email-address"}
+                            keyboardType={"default"}
                             onChangeText={(value)=>{
-                                this.setState({email:value})
+                                this.setState({desc:value})
                             }}
                             style={{borderBottomColor:"gainsboro", borderBottomWidth:1}}
                             underlineAndroid={colors.primarydark}
@@ -54,13 +62,38 @@ class CreateGeng extends Component {
                 </View>
 
                     <View style={{height:100, justifyContent:'center', padding:16}}>
-                        <TouchableOpacity style={{height:40, borderRadius:30, borderWidth:1, borderColor:colors.primary, justifyContent:'center', alignItems:'center'}}>
-                            <Text style={{color:colors.primary}}>Create Geng</Text>
+                        <TouchableOpacity
+                            onPress={() => {
+                                this.createGeng()
+                            }}
+                            style={{ height: 40, borderRadius: 30, borderWidth: 1, borderColor: colors.primary, justifyContent: 'center', alignItems: 'center' }}>
+                            {
+                                this.state.loading ? <ActivityIndicator size="small" color={colors.primarydark}/> :
+                                <Text style={{color:colors.primary}}>Create Geng</Text>
+                            }
                         </TouchableOpacity>
                     </View>
             </ScrollView>
             </View>
         )
+    }
+
+    createGeng = () => {
+        let { name, desc, hasPickedImage } = this.state;
+        //path to geng
+        let path = backend.database().ref().child("gengs");
+        if (!hasPickedImage) {
+            if (name !== "") {
+                this.setState({ loading: true })
+                path.push({ name, desc, image: "" }).then(data => {
+                    console.log(data);
+                    this.setState({ loading: false });
+                    this.props.navigation.goBack();
+                })
+                
+
+            }
+        }
     }
 }
 

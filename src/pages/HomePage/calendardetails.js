@@ -24,7 +24,7 @@ export default  class CalendarDetails extends React.Component{
             <View style={{flex:1, backgroundColor:colors.primarydark, position:'relative'}}>
                 <View style={{height:260, position:'absolute', top:0, left:0,right:0, bottom:0}}>
                     <Transition shared={this.props.navigation.state.params.id}>
-                        <Image source={require("../../assets/img/slider3.jpg")} style={{height:260, width:'100%', resizeMode:'center'}}/>
+                        <Image source={require("../../assets/img/slider3.jpg")} style={{height:260, width:'100%', resizeMode:'stretch'}}/>
                     </Transition>
 
                 </View>
@@ -75,7 +75,7 @@ export default  class CalendarDetails extends React.Component{
                     padding:8
                 }}>
                     <Transition appear={"left"} disappear={"right"} >
-                        <TouchableOpacity style={{height:50, width:50, borderRadius:25,backgroundColor:colors.primary, justifyContent:'center', alignItems:'center' }}
+                        <TouchableOpacity style={{height:40, width:40, borderRadius:25,backgroundColor:colors.primary, justifyContent:'center', alignItems:'center' }}
                                           onPress={()=>{
                                               this.props.navigation.goBack();
                                           }}>

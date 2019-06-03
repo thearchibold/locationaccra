@@ -10,6 +10,7 @@ const socialnetork = createAppContainer(createFluidNavigator({
             header:null
         })
     }
+    
 },{
 
     initialRouteName:"socialnetwork",

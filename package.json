@@ -1,6 +1,6 @@
 {
   "name": "locationaccra",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -20,6 +20,7 @@
     "react-native-keep-awake": "^4.0.0",
     "react-native-linear-gradient": "^2.5.4",
     "react-native-orientation": "^3.1.3",
+    "react-native-popup-menu": "^0.15.6",
     "react-native-vector-icons": "^6.4.0",
     "react-native-video": "^4.4.0",
     "react-native-video-player": "^0.10.0",

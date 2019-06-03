@@ -5,6 +5,7 @@ import {colors, url} from "../../helpers/constants";
 import {Separator} from "../../components/separator";
 import {TimelineImage, TimelineText, TimelineVideo} from "../../components/timeline_components";
 import { backend } from "../../helpers/firebase";
+import { getTimeline } from "../../helpers/functions";
 
 
 
@@ -26,6 +27,7 @@ class Timeline extends Component{
         const offsetAnim = new Animated.Value(0);
 
         this.state = {
+            loading:false,
             timelinedata:[],
             scrollAnim,
             offsetAnim,
@@ -42,22 +44,17 @@ class Timeline extends Component{
                 NAVBAR_HEIGHT - STATUS_BAR_HEIGHT,
             ),
 
+            
+
         }
     }
 
-    componentWillMount(){
-        let temp = this.state.timelinedata
-        backend.database().ref().child(url.TIMELINE).on('value',(snapshot)=>{
-            //this.setState({timelinedata:snapshot.val})
-           //alert(snapshot.key)
-            temp.push({
-                key:snapshot.key,
-                value:snapshot.val()
-            })
-
-            this.setState({timelinedata:temp})
-        })
-        
+    componentWillMount() {
+        this.setState({loading:true})
+        getTimeline().then(data => {
+            console.log("promise timeline", data);
+            this.setState({timelinedata:data.reverse(), loading:false})
+       })        
     }
 
 
@@ -127,12 +124,20 @@ class Timeline extends Component{
 
                    </TouchableNativeFeedback>
                    <Separator/>
-                   <FlatList
+                    <FlatList
+                        refreshing={this.state.loading}
+                        onRefresh={() => {
+                            this.setState({loading:true})
+                            getTimeline().then(data => {
+                                console.log("promise timeline", data);
+                                this.setState({timelinedata:data, loading:false})
+                           })    
+                        }}
                    extraData={this.state}
                    data={this.state.timelinedata}
                    keyExtractor={(item, index)=> {return index.toString}}
                    renderItem={({item})=>{
-                       console.log(item)
+                       
                        if(item.value.type === 'text'){
                         return(<TimelineText data={item.value}/>)
                        }
@@ -145,17 +150,6 @@ class Timeline extends Component{
                     
 
                     <Separator/>
-
-                    {/* <TimelineText/>
-
-                    <Separator/>
-
-                    <TimelineVideo/>
-
-                    <Separator/> */}
-
-
-
 
                     <View style={{height:60}}/>
                 </AnimatedListView>

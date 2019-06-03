@@ -17,6 +17,8 @@ import {Authentication} from "./Authentication";
 import SplashScreen from "./SplachScreen/SplashScreen";
 import  ChatPage from "./Social/ChatPage"
 import {CreateGeng} from "./Social/CreateGeng";
+import GengDetails from "./Social/GengDetails";
+import SearchGengs from "./Social/SearchGeng";
 
 
 const HomeTabs = createAppContainer(createBottomTabNavigator({
@@ -133,7 +135,19 @@ const Navigator = createAppContainer(createFluidNavigator({
             navigationOptions: ({navigation})=>({
                 header:null
             })
-        }
+    },
+    gengdetails:{
+        screen:GengDetails,
+        navigationOptions: ({navigation})=>({
+            header:null
+        })
+    },
+    searchgeng:{
+        screen:SearchGengs,
+        navigationOptions: ({navigation})=>({
+            header:null
+        })
+    }
 
     },
     {
